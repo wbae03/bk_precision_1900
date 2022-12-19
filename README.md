@@ -33,3 +33,19 @@ poetry run python bk_demo.py [SERIAL_PORT]
 This will execute the `bk_demo.py` script, which sets a series of voltages in the BK Precision 1902B and prints out the display readouts.
 
 Note that you will need to have poetry installed on your system in order to use the poetry run command. You can install poetry by following the instructions at https://python-poetry.org/docs/.
+
+## Usage
+
+Sample usage to control a BK Precision 1902B at port `/dev/ttyUSB0`
+
+```python
+from bk1902b import BK1902B
+
+with BK1902B("/dev/ttyUSB0") as psu:
+    print("Resetting output")
+    psu.set_current(0.1)
+    psu.set_voltage(1)
+    psu.set_output_on()
+    time.sleep(10)
+    psu.set_output_off()
+```
