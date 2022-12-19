@@ -1,9 +1,12 @@
 [tool.poetry]
 name = "bk_precision_1900"
-version = "0.1.0"
-description = ""
+version = "0.2.0"
+description = "Control the BK Precision 1900 series power supplies"
 authors = ["Carlos Asmat <casmat@dephy.com>"]
 license = "MIT"
+repository = "https://github.com/DephyInc/bk_precision_1900"
+readme = "README.md"
+keywords = ["B&K", "BK Precision", "hardware"]
 
 [tool.poetry.dependencies]
 python = "^3.10"
