@@ -73,7 +73,7 @@ class BK1902B:
             if reply != b"OK\r":
                 raise RuntimeError(
                     f"Error encountered when sending the command: {cmd}.\n"
-                    + "Reply received: {reply}"
+                    + f"Reply received: {reply}"
                 )
 
     def set_voltage(self, voltage: float):
@@ -90,11 +90,11 @@ class BK1902B:
             print(f"[!] The input voltage was clamped to {valid_current}")
         self._sendCmd(f"CURR{self._toBkStr(valid_current)}\r")
 
-    def set_output_on(self):
+    def enable_output(self):
         """Enable output"""
         self._sendCmd("SOUT0\r")
 
-    def set_output_off(self):
+    def disable_output(self):
         """Disable output"""
         self._sendCmd("SOUT1\r")
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "bk_precision_1900"
-version = "1.0.0"
+version = "1.0.1"
 description = "Control the BK Precision 1900 series power supplies"
 authors = ["Carlos Asmat <casmat@dephy.com>"]
 license = "MIT"

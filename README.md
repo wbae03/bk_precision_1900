@@ -24,9 +24,10 @@ poetry install
 
 ## Running the Demo Code
 
-To run the demo code, use the following command:
+To run the demo code from the repo, use the following command:
 
 ```bash
+poetry shell
 poetry run python bk_demo.py [SERIAL_PORT]
 ```
 
@@ -36,16 +37,23 @@ Note that you will need to have poetry installed on your system in order to use 
 
 ## Usage
 
-Sample usage to control a BK Precision 1902B at port `/dev/ttyUSB0`
+Sample code snippey to control a BK Precision 1902B at port `/dev/ttyUSB0`
 
 ```python
-from bk1902b import BK1902B
+from bk_precision_1900.bk1902b import BK1902B
 
 with BK1902B("/dev/ttyUSB0") as psu:
-    print("Resetting output")
     psu.set_current(0.1)
     psu.set_voltage(1)
     psu.set_output_on()
     time.sleep(10)
     psu.set_output_off()
 ```
+
+## To Do
+
+* Implement all commands
+* cleanup repo structure
+* Read max voltage and current instead of hard-coding
+* Add tests
+* Automate release
