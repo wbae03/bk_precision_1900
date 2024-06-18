@@ -14,21 +14,26 @@ def main():
 
     with BK1902B(args.port) as psu:
         print("Resetting output")
-        psu.set_output_off()
+        psu.disable_output()
+        #psu.set_output_off()
         psu.set_current(0.1)
         psu.set_voltage(1)
         time.sleep(10)
-        psu.set_output_on()
-        for voltage in range(1, 40, 5):
-            psu.set_voltage(voltage)
-            time.sleep(2)
+        #psu.set_output_on()
+        psu.enable_output()
+
+        for voltage in range(1, 701, 1): # last element in range not counted!!!
+            voltage = voltage / 100
+            psu.set_voltage(1.1 + voltage)
+            time.sleep(0.6)
             output = psu.get_display()
             mode = "CV" if output[2] else "CC"
             print(
-                f"Voltage set to {voltage}V."
+                f"Voltage set to {round(1.1 + voltage,2)}V."
                 + f"Measured: {output[0]}V @ {output[1]}A {mode}"
             )
-        psu.set_output_off()
+        psu.disable_output()
+        #psu.set_output_off()
 
 
 if __name__ == "__main__":
